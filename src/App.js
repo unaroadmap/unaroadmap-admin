@@ -16,9 +16,10 @@ import Business from '@material-ui/icons/Business';
 import Dashboard from './Dashboard';
 import authProvider from './authProvider';
 import dataProvider from './dataProvider';
+//import simpleRestProvider from 'ra-data-simple-rest';
 
 const App = () => (
-   <Admin dashboard={Dashboard} authProvider={authProvider} dataProvider={dataProvider}>
+   <Admin authProvider={authProvider} dashboard={Dashboard} dataProvider={dataProvider}>
       <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon}/>
       <Resource name="states" list={StateList} edit={StateEdit} create={StateCreate}/>
       <Resource name="citys" list={CityList} edit={CityEdit} create={CityCreate}/>

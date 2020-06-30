@@ -22,59 +22,49 @@ export const CompanyList = props => {
         ):(
         <Datagrid rowClick="edit">
             <TextField source="id" />
-            <TextField source="name" />
-            <DateField source="birthday" />
-            <TextField source="sexo" />
-            <TextField source="schooling" />
-            <TextField source="nationality" />
-            <TextField source="mother_name" />
-            <TextField source="father_name" />
-            <TextField source="telephone" />
-            <TextField source="cell_phone" />
             <ReferenceField source="user_id" reference="users">
               <TextField source="email" />
             </ReferenceField>
+            <TextField source="name" />
+            <TextField source="cnpj" />
+            <TextField source="email" />
+            <TextField source="telephone" />
+            <TextField source="cell_phone" />
         </Datagrid>
         )}
     </List>
     )
 };
 
-export const CandidateEdit = props => (
-    <Edit title={<CandidateTitle />} {...props}>
+export const CompanyEdit = props => (
+    <Edit title={<CompanyTitle />} {...props}>
       <SimpleForm>
             <TextInput disabled source="id" />
-            <TextInput source="name" /> 
-            <DateInput source="birthday" />
-            <TextInput source="sexo" />
-            <TextInput source="schooling" />
-            <TextInput source="nationality" />
-            <TextInput source="mother_name" />
-            <TextInput source="father_name" />
-            <TextInput source="telephone" />
-            <TextInput source="cell_phone" />
-          <ReferenceInput source="user_id"  reference="users">
+            <ReferenceInput source="user_id"  reference="users">
             <SelectInput optionText="email" />
-        </ReferenceInput>
+            </ReferenceInput>
+            <TextField source="name" />
+            <TextField source="cnpj" />
+            <TextField source="email" />
+            <TextField source="telephone" />
+            <TextField source="cell_phone" />
+          
       </SimpleForm>    
     </Edit>  
   );
 
-  export const CandidateCreate = props => (
+  export const CompanyCreate = props => (
     <Create {...props}>
       <SimpleForm>
-      <TextInput source="name" /> 
-            <DateInput source="birthday" />
-            <TextInput source="sexo" />
-            <TextInput source="schooling" />
-            <TextInput source="nationality" />
-            <TextInput source="mother_name" />
-            <TextInput source="father_name" />
-            <TextInput source="telephone" />
-            <TextInput source="cell_phone" />
-          <ReferenceInput source="user_id"  reference="users">
+            <TextInput disabled source="id" />
+            <ReferenceInput source="user_id"  reference="users">
             <SelectInput optionText="email" />
-        </ReferenceInput>
+            </ReferenceInput>
+            <TextField source="name" />
+            <TextField source="cnpj" />
+            <TextField source="email" />
+            <TextField source="telephone" />
+            <TextField source="cell_phone" />
       </SimpleForm>    
     </Create>  
   );

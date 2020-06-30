@@ -1,8 +1,18 @@
-import { fetchUtils } from 'react-admin';
+import { fetchUtils, Admin, Resource } from 'react-admin';
 import { stringify } from 'query-string';
 
-const apiUrl = 'http://192.168.1.4:3000';
-const httpClient = fetchUtils.fetchJson;
+
+const apiUrl = 'https://unaroadmap-api.herokuapp.com';
+//const httpClient = fetchUtils.fetchJson;
+
+const httpClient = (url, options = {}) => {
+    if(!options.headers) {
+        options.headers = new Headers({ Accept: 'application/json' });
+    }
+    const token = localStorage.getItem('@unaroadmap-Token');
+    options.headers.set('Authorization', `Bearer ${token}`);
+    return fetchUtils.fetchJson(url, options);
+}
 
 export default {
     getList: (resource, params) => {
@@ -90,5 +100,6 @@ export default {
             method: 'DELETE',
             body: JSON.stringify(params.data),
         }).then(({ json }) => ({ data: json }));
-    }
+    },
+    
 };
