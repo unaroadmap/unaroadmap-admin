@@ -4,10 +4,10 @@ export const TOKEN_KEY = "@unaroadmap-Token";
 export const PERMISSIONS = 'permissions';
 
 const authProvider = {
-    login: ({ username, password }) => {
+    login: ({ email, password }) => {
         const request = new Request('https://unaroadmap-api.herokuapp.com/users/login', {
             method: 'POST',
-            body: JSON.stringify({ email: username, password }),
+            body: JSON.stringify({ email, password }),
             headers: new Headers({ 'Content-Type': 'application/json' }),
 
         });

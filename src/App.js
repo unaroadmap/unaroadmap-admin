@@ -24,6 +24,8 @@ import Timeline from '@material-ui/icons/Timeline';
 import Dashboard from './Dashboard';
 import authProvider from './authProvider';
 import dataProvider from './dataProvider';
+import LoginPage from './login/LoginPage';
+import LogoutButton from './components/login/LogoutButton.js';
 
 import portugueseMessages from "@henriko/ra-language-portuguese";
 import polyglotI18nProvider from "ra-i18n-polyglot";
@@ -35,7 +37,7 @@ const messages = {
 const i18nProvider = polyglotI18nProvider((locale) => messages[locale], "pt");
 
 const App = () => (
-   <Admin  i18nProvider={i18nProvider} authProvider={authProvider} dashboard={Dashboard} dataProvider={dataProvider}>
+   <Admin loginPage={LoginPage} logoutButton={LogoutButton} authProvider={authProvider} i18nProvider={i18nProvider} dashboard={Dashboard} dataProvider={dataProvider}>
  
               <Resource name="users" options={{ label: 'Usuários'}} list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon} />
               <Resource name="states" options={{ label: 'Estados'}} list={StateList} edit={StateEdit} create={StateCreate} />
