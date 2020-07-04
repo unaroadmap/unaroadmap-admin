@@ -4,6 +4,42 @@ import { List, SimpleList, Datagrid, TextField, TextInput,
          ReferenceInput, DateField, DateInput  } from 'react-admin';
 import { useMediaQuery } from '@material-ui/core';
 
+
+const SexoCandidate = [
+  {id: 'M', name: 'Masculino'},
+  {id: 'F', name: 'Feminino'}
+];
+
+const UnaSexoInput = (props) => {
+  return (
+    <SelectInput {...props} choices={SexoCandidate} />
+  );
+};
+
+const EscolaridadeCandidate = [
+  {id: 'Fundamental - Incompleto', name: 'Fundamental - Incompleto'},
+  {id: 'Fundamental - Completo', name: 'Fundamental - Completo'},
+  {id: 'Médio - Incompleto', name: 'Médio - Incompleto'},
+  {id: 'Médio - Completo', name: 'Médio - Completo'},
+];
+
+const UnaEscolaridadeInput = (props) => {
+  return (
+    <SelectInput {...props} choices={EscolaridadeCandidate} />
+  );
+};
+
+const NacionalidadeCandidate = [
+  {id: 'Brasileiro', name: 'Brasileiro'},
+  {id: 'Estrangeiro', name: 'Estrangeiro'}
+];
+
+const UnaNacionalidadeInput = (props) => {
+  return (
+    <SelectInput {...props} choices={NacionalidadeCandidate} />
+  );
+};
+
 const CandidateTitle = ({ record }) => {
     return <span>Candidato {record ? `"${record.name}"` : ''}</span>
 };
@@ -22,16 +58,16 @@ export const CandidateList = props => {
         ):(
         <Datagrid rowClick="edit">
             <TextField source="id" />
-            <TextField source="name" />
-            <DateField source="birthday" />
+            <TextField label="Nome" source="name" />
+            <DateField label="Data de Nascimento" source="birthday" />
             <TextField source="sexo" />
-            <TextField source="schooling" />
-            <TextField source="nationality" />
-            <TextField source="mother_name" />
-            <TextField source="father_name" />
-            <TextField source="telephone" />
-            <TextField source="cell_phone" />
-            <ReferenceField source="user_id" reference="users">
+            <TextField label="Escolaridade" source="schooling" />
+            <TextField label="Nacionalidade" source="nationality" />
+            <TextField label="Nome da Mãe" source="mother_name" />
+            <TextField label="Nome do Pai" source="father_name" />
+            <TextField label="Telefone" source="telephone" />
+            <TextField label="Celular" source="cell_phone" />
+            <ReferenceField label="Usuário" source="user_id" reference="users">
               <TextField source="email" />
             </ReferenceField>
         </Datagrid>
@@ -44,16 +80,16 @@ export const CandidateEdit = props => (
     <Edit title={<CandidateTitle />} {...props}>
       <SimpleForm>
             <TextInput disabled source="id" />
-            <TextInput source="name" /> 
-            <DateInput source="birthday" />
-            <TextInput source="sexo" />
-            <TextInput source="schooling" />
-            <TextInput source="nationality" />
-            <TextInput source="mother_name" />
-            <TextInput source="father_name" />
-            <TextInput source="telephone" />
-            <TextInput source="cell_phone" />
-          <ReferenceInput source="user_id"  reference="users">
+            <TextInput label="Nome" source="name" /> 
+            <DateInput label="Data de Nascimento" source="birthday" />
+            <UnaSexoInput source="sexo" />
+            <UnaEscolaridadeInput label="Escolaridade" source="schooling" />
+            <UnaNacionalidadeInput label="Nacionalidade" source="nationality" />
+            <TextInput label="Nome da Mãe" source="mother_name" />
+            <TextInput label="Nome do Pai" source="father_name" />
+            <TextInput label="Telefone" source="telephone" />
+            <TextInput label="Celular" source="cell_phone" />
+          <ReferenceInput label="Usuário" source="user_id"  reference="users">
             <SelectInput optionText="email" />
         </ReferenceInput>
       </SimpleForm>    
@@ -63,18 +99,19 @@ export const CandidateEdit = props => (
   export const CandidateCreate = props => (
     <Create {...props}>
       <SimpleForm>
-      <TextInput source="name" /> 
-            <DateInput source="birthday" />
-            <TextInput source="sexo" />
-            <TextInput source="schooling" />
-            <TextInput source="nationality" />
-            <TextInput source="mother_name" />
-            <TextInput source="father_name" />
-            <TextInput source="telephone" />
-            <TextInput source="cell_phone" />
-          <ReferenceInput source="user_id"  reference="users">
-            <SelectInput optionText="email" />
-        </ReferenceInput>
+          <ReferenceInput label="Usuário" source="user_id"  reference="users">
+              <SelectInput optionText="email" />
+            </ReferenceInput>
+            <TextInput label="Nome" source="name" /> 
+            <DateInput label="Data de Nascimento" source="birthday" />
+            <UnaSexoInput source="sexo" />
+            <UnaEscolaridadeInput label="Escolaridade" source="schooling" />
+            <UnaNacionalidadeInput label="Nacionalidade" source="nationality" />
+            <TextInput label="Nome da Mãe" source="mother_name" />
+            <TextInput label="Nome do Pai" source="father_name" />
+            <TextInput label="Telefone" source="telephone" />
+            <TextInput label="Celular" source="cell_phone" />
+            
       </SimpleForm>    
     </Create>  
   );

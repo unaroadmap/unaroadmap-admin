@@ -42,9 +42,9 @@ export const AddressEdit = props => (
       <SimpleForm>
             <TextInput disabled source="id" />
             <TextInput source="cep" />
-            <TextInput source="logradouro" />
-            <TextInput source="number" />
-            <TextInput source="complement" />
+            <TextInput label="Rua" source="logradouro" />
+            <TextInput label="Número" source="number" />
+            <TextInput label="Complemento" source="complement" />
             <ReferenceInput label="Bairro" source="district_id" reference="districts">
               <SelectInput optionText="name" />
             </ReferenceInput>

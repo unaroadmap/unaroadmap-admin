@@ -25,21 +25,22 @@ import Dashboard from './Dashboard';
 import authProvider from './authProvider';
 import dataProvider from './dataProvider';
 
-const App = () => (
-   <Admin authProvider={authProvider} dashboard={Dashboard} dataProvider={dataProvider}>
-      <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon} />
-      <Resource name="states" list={StateList} edit={StateEdit} create={StateCreate} />
-      <Resource name="citys" list={CityList} edit={CityEdit} create={CityCreate} />
-      <Resource name="districts" list={DistrictList} edit={DistrictEdit} create={DistrictCreate}/>
-      <Resource name="candidates" list={CandidateList} edit={CandidateEdit} create={CandidateCreate} icon={AccountBoxRounded} />
-      <Resource name="address" list={AddressList} edit={AddressEdit} create={AddressCreate} />
-      <Resource name="documents" list={DocumentList} edit={DocumentEdit} create={DocumentCreate} />
-      <Resource name="companys" list={CompanyList} edit={CompanyEdit} create={CompanyCreate} icon={BusinessCenterSharp} />
-      <Resource name="projects" list={ProjectList} edit={ProjectEdit} create={ProjectCreate} icon={BallotSharp} />
-      <Resource name="topics" list={TopicList} edit={TopicEdit} create={TopicCreate} icon={Settings} />
-      <Resource name="trails" list={TrailList} edit={EditGuesser} create={TrailCreate} icon={Timeline} />
-      <Resource name="techs" list={ListGuesser} edit={EditGuesser} icon={Code} />
 
+const App = () => (
+   <Admin  authProvider={authProvider} dashboard={Dashboard} dataProvider={dataProvider}>
+ 
+              <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon} />
+              <Resource name="states" list={StateList} edit={StateEdit} create={StateCreate} />
+              <Resource name="citys" list={CityList} edit={CityEdit} create={CityCreate} />
+              <Resource name="districts" list={DistrictList} edit={DistrictEdit} create={DistrictCreate}/>
+              <Resource name="candidates" list={CandidateList} edit={CandidateEdit} create={CandidateCreate} icon={AccountBoxRounded} />
+              <Resource name="address" list={AddressList} edit={AddressEdit} create={AddressCreate} />
+              <Resource name="documents" list={DocumentList} edit={DocumentEdit} create={DocumentCreate} />
+              <Resource name="companys" list={CompanyList} edit={CompanyEdit} create={CompanyCreate} icon={BusinessCenterSharp} />
+              <Resource name="projects" list={ProjectList} edit={ProjectEdit} create={ProjectCreate} icon={BallotSharp} />
+              <Resource name="topics" list={TopicList} edit={TopicEdit} create={TopicCreate} icon={Settings} />
+              <Resource name="trails" list={TrailList} edit={EditGuesser} create={TrailCreate} icon={Timeline} />
+              <Resource name="techs" list={ListGuesser} edit={EditGuesser} icon={Code} />
    </Admin>   
 );
 

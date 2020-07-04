@@ -1,9 +1,11 @@
 import { AUTH_LOGIN } from 'react-admin';
+import decodeJwt from 'jwt-decode';
 export const TOKEN_KEY = "@unaroadmap-Token";
+export const PERMISSIONS = 'permissions';
 
 const authProvider = {
     login: ({ username, password }) => {
-        const request = new Request('https://unaroadmap-api.herokuapp.com/users/login', {
+        const request = new Request('http://localhost:3000/users/login', {
             method: 'POST',
             body: JSON.stringify({ email: username, password }),
             headers: new Headers({ 'Content-Type': 'application/json' }),
@@ -18,12 +20,22 @@ const authProvider = {
                 return response.json();
             })
             .then(({ token }) => {
+                const decodeToken = decodeJwt(token);
+               
+                if(decodeToken.permissions === 'Candidato'){
+                    throw new Error('Acesso não Autorizado');
+                    return Promise.reject();
+                }
+
                 localStorage.setItem(TOKEN_KEY, token);
-                return Promise.resolve();
+                localStorage.setItem(PERMISSIONS, decodeToken.permissions);            
+                
+               // return Promise.reject();
             });
     },
     logout: () => {
         localStorage.removeItem(TOKEN_KEY);
+        localStorage.removeItem(PERMISSIONS);
         return Promise.resolve();
     },
     checkError: ({ status }) => {
@@ -40,7 +52,10 @@ const authProvider = {
               : Promise.reject();
       },
   
-      getPermissions: () => Promise.resolve(),
+      getPermissions: () => {
+        const role = localStorage.getItem(PERMISSIONS);
+        return role ? Promise.resolve(role) : Promise.reject();
+      }
 };
 
 export default authProvider;

@@ -3,6 +3,29 @@ import { List, SimpleList, Datagrid, TextField, TextInput,
     EmailField, Edit, SimpleForm, Create, SelectInput,SelectField } from 'react-admin';
 import { useMediaQuery } from '@material-ui/core';
 
+const PerfilUser = [
+  {id: 'Administrador', name: 'Administrador'},
+  {id: 'Candidato', name: 'Candidato'},
+  {id: 'Empresa', name: 'Empresa'}
+];
+
+const StatusUser = [
+  {id: 'Active', name: 'Ativo'},
+  {id: 'Inactive', name: 'Desativado'}
+];
+
+const UnaPerfilInput = (props) => {
+  return (
+    <SelectInput {...props} choices={PerfilUser} />
+  );
+};
+
+const UnaStatusInput = (props) => {
+  return (
+    <SelectInput {...props} choices={StatusUser} />
+  );
+};
+
 const UserTitle = ({ record }) => {
     return <span>Usuário {record ? `"${record.email}"` : ''}</span>
 };
@@ -35,9 +58,8 @@ export const UserEdit = props => (
       <SimpleForm>
           <TextInput disabled source="id" />
           <TextInput source="email" />
-          <TextInput source="password" />
-          <TextInput source="status" />
-          <TextInput source="profile" label="Perfil" />
+          <UnaStatusInput source="status" />
+          <UnaPerfilInput source="profile" label="Perfil" />
       </SimpleForm>    
     </Edit>  
   );
@@ -47,8 +69,8 @@ export const UserEdit = props => (
       <SimpleForm>
           <TextInput source="email" />
           <TextInput source="password" />
-          <TextInput source="status" />
-          <TextInput source="profile" label="Perfil" />
+          <UnaStatusInput source="status" />
+          <UnaPerfilInput source="profile" label="Perfil" />
       </SimpleForm>    
     </Create>  
   );
