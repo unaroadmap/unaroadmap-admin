@@ -25,7 +25,7 @@ import Dashboard from './Dashboard';
 import authProvider from './authProvider';
 import dataProvider from './dataProvider';
 import LoginPage from './login/LoginPage';
-import LogoutButton from './components/login/LogoutButton.js';
+import LogoutButton from './login/LogoutButton.js';
 
 import portugueseMessages from "@henriko/ra-language-portuguese";
 import polyglotI18nProvider from "ra-i18n-polyglot";
