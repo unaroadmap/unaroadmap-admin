@@ -2,7 +2,7 @@ import { fetchUtils, Admin, Resource } from 'react-admin';
 import { stringify } from 'query-string';
 
 
-const apiUrl = 'http://localhost:3000';
+const apiUrl = 'https://unaroadmap-api.herokuapp.com';
 //const httpClient = fetchUtils.fetchJson;
 
 const httpClient = (url, options = {}) => {

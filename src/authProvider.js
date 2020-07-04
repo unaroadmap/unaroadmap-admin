@@ -5,7 +5,7 @@ export const PERMISSIONS = 'permissions';
 
 const authProvider = {
     login: ({ username, password }) => {
-        const request = new Request('http://localhost:3000/users/login', {
+        const request = new Request('https://unaroadmap-api.herokuapp.com/users/login', {
             method: 'POST',
             body: JSON.stringify({ email: username, password }),
             headers: new Headers({ 'Content-Type': 'application/json' }),
