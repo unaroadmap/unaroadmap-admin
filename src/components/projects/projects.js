@@ -1,7 +1,8 @@
 import * as React from "react";
 import { List, SimpleList, Datagrid, TextField, TextInput, 
          Edit, SimpleForm, Create, SelectInput, ReferenceField, 
-         ReferenceInput, DateField, DateInput  } from 'react-admin';
+         ReferenceInput, ArrayField, SingleFieldList, ChipField, 
+         DateField, DateInput,ArrayInput,SimpleFormIterator  } from 'react-admin';
 import { useMediaQuery } from '@material-ui/core';
 
 const ProjectTitle = ({ record }) => {
@@ -21,12 +22,22 @@ export const ProjectList = props => {
             />
         ):(
         <Datagrid rowClick="edit">
-            <TextField source="id" />
+            <TextField label="Código" source="id" />
+            <TextField label="Nome" source="name" />
+            <TextField label="Descrição" source="description" />
             <ReferenceField label="Empresa" source="company_id" reference="companys">
               <TextField source="name" />
             </ReferenceField>
-            <TextField source="name" />
-            <TextField source="description" />
+            <ArrayField label="Candidatos" source="candidates">
+              <SingleFieldList>
+                <ChipField source="name" />
+                </SingleFieldList>
+            </ArrayField>
+            <ArrayField label="Trilhas" source="trails">
+              <SingleFieldList>
+                <ChipField source="name" />
+              </SingleFieldList>
+            </ArrayField>
         </Datagrid>
         )}
     </List>
@@ -35,13 +46,27 @@ export const ProjectList = props => {
 
 export const ProjectEdit = props => (
     <Edit title={<ProjectTitle />} {...props}>
-      <SimpleForm>
-            <TextInput disabled source="id" />
+       <SimpleForm>
+            <TextInput disabled label="Código" source="id" />
+            <TextInput label="Nome" source="name" />
+            <TextInput label="Descrição" source="description" />
             <ReferenceInput label="Empresa" source="company_id" reference="companys">
-              <SelectInput source="name" />
+                <SelectInput optionText="name" />
             </ReferenceInput>
-            <TextInput source="name" /> 
-            <TextInput source="description" />
+            <ArrayInput label="Candidatos" source="candidates">
+              <SimpleFormIterator>
+                <ReferenceInput source="candidate_id" reference="candidates">
+                  <SelectInput optionText="name" />
+                </ReferenceInput>
+              </SimpleFormIterator>
+            </ArrayInput>
+            <ArrayInput label="Trilhas" source="trails">
+              <SimpleFormIterator>
+                <ReferenceInput source="trail_id" reference="trails">
+                  <SelectInput optionText="name" />
+                </ReferenceInput>
+              </SimpleFormIterator>
+            </ArrayInput>
       </SimpleForm>    
     </Edit>  
   );
@@ -49,13 +74,25 @@ export const ProjectEdit = props => (
   export const ProjectCreate = props => (
     <Create {...props}>
       <SimpleForm>
-          <TextInput source="name" /> 
-          <TextInput disabled source="id" />
-          <ReferenceInput label="Empresa" source="company_id" reference="companys">
-              <SelectInput source="name" />
-          </ReferenceInput>
-          <TextInput source="name" /> 
-          <TextInput source="description" />
+      <TextInput label="Nome" source="name" />
+            <TextInput label="Descrição" source="description" />
+            <ReferenceInput label="Empresa" source="company_id" reference="companys">
+                <SelectInput optionText="name" />
+            </ReferenceInput>
+            <ArrayInput label="Candidatos" source="candidates">
+              <SimpleFormIterator>
+                <ReferenceInput source="candidate_id" reference="candidates">
+                  <SelectInput optionText="name" />
+                </ReferenceInput>
+              </SimpleFormIterator>
+            </ArrayInput>
+            <ArrayInput label="Trilhas" source="trails">
+              <SimpleFormIterator>
+                <ReferenceInput source="trail_id" reference="trails">
+                  <SelectInput optionText="name" />
+                </ReferenceInput>
+              </SimpleFormIterator>
+            </ArrayInput>
       </SimpleForm>    
     </Create>  
   );

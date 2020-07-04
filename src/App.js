@@ -45,7 +45,7 @@ const App = () => (
               <Resource name="address" options={{ label: 'Endereços'}} list={AddressList} edit={AddressEdit} create={AddressCreate} />
               <Resource name="documents" options={{ label: 'Documentos'}} list={DocumentList} edit={DocumentEdit} create={DocumentCreate} />
               <Resource name="companys" options={{ label: 'Empresas'}} list={CompanyList} edit={CompanyEdit} create={CompanyCreate} icon={BusinessCenterSharp} />
-              <Resource name="projects" options={{ label: 'Projetos'}} list={ListGuesser} edit={EditGuesser} create={ProjectCreate} icon={BallotSharp} />
+              <Resource name="projects" options={{ label: 'Projetos'}} list={ProjectList} edit={ProjectEdit} create={ProjectCreate} icon={BallotSharp} />
               <Resource name="topics" options={{ label: 'Tópicos'}} list={ListGuesser} edit={ListGuesser} create={TopicCreate} icon={Settings} />
               <Resource name="trails" options={{ label: 'Trilhas'}} list={ListGuesser} edit={EditGuesser} create={TrailCreate} icon={Timeline} />
               <Resource name="techs" options={{ label: 'Tecnologias'}} list={ListGuesser} edit={EditGuesser} icon={Code} />
