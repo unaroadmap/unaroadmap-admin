@@ -25,22 +25,30 @@ import Dashboard from './Dashboard';
 import authProvider from './authProvider';
 import dataProvider from './dataProvider';
 
+import portugueseMessages from "@henriko/ra-language-portuguese";
+import polyglotI18nProvider from "ra-i18n-polyglot";
+
+const messages = {
+   pt: portugueseMessages,
+};
+
+const i18nProvider = polyglotI18nProvider((locale) => messages[locale], "pt");
 
 const App = () => (
-   <Admin  authProvider={authProvider} dashboard={Dashboard} dataProvider={dataProvider}>
+   <Admin  i18nProvider={i18nProvider} authProvider={authProvider} dashboard={Dashboard} dataProvider={dataProvider}>
  
-              <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon} />
-              <Resource name="states" list={StateList} edit={StateEdit} create={StateCreate} />
-              <Resource name="citys" list={CityList} edit={CityEdit} create={CityCreate} />
-              <Resource name="districts" list={DistrictList} edit={DistrictEdit} create={DistrictCreate}/>
-              <Resource name="candidates" list={CandidateList} edit={CandidateEdit} create={CandidateCreate} icon={AccountBoxRounded} />
-              <Resource name="address" list={AddressList} edit={AddressEdit} create={AddressCreate} />
-              <Resource name="documents" list={DocumentList} edit={DocumentEdit} create={DocumentCreate} />
-              <Resource name="companys" list={CompanyList} edit={CompanyEdit} create={CompanyCreate} icon={BusinessCenterSharp} />
-              <Resource name="projects" list={ProjectList} edit={ProjectEdit} create={ProjectCreate} icon={BallotSharp} />
-              <Resource name="topics" list={TopicList} edit={TopicEdit} create={TopicCreate} icon={Settings} />
-              <Resource name="trails" list={TrailList} edit={EditGuesser} create={TrailCreate} icon={Timeline} />
-              <Resource name="techs" list={ListGuesser} edit={EditGuesser} icon={Code} />
+              <Resource name="users" options={{ label: 'Usuários'}} list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon} />
+              <Resource name="states" options={{ label: 'Estados'}} list={StateList} edit={StateEdit} create={StateCreate} />
+              <Resource name="citys" options={{ label: 'Cidades'}} list={CityList} edit={CityEdit} create={CityCreate} />
+              <Resource name="districts" options={{ label: 'Bairros'}} list={DistrictList} edit={DistrictEdit} create={DistrictCreate}/>
+              <Resource name="candidates" options={{ label: 'Candidatos'}} list={CandidateList} edit={CandidateEdit} create={CandidateCreate} icon={AccountBoxRounded} />
+              <Resource name="address" options={{ label: 'Endereços'}} list={AddressList} edit={AddressEdit} create={AddressCreate} />
+              <Resource name="documents" options={{ label: 'Documentos'}} list={DocumentList} edit={DocumentEdit} create={DocumentCreate} />
+              <Resource name="companys" options={{ label: 'Empresas'}} list={CompanyList} edit={CompanyEdit} create={CompanyCreate} icon={BusinessCenterSharp} />
+              <Resource name="projects" options={{ label: 'Projetos'}} list={ListGuesser} edit={EditGuesser} create={ProjectCreate} icon={BallotSharp} />
+              <Resource name="topics" options={{ label: 'Tópicos'}} list={ListGuesser} edit={ListGuesser} create={TopicCreate} icon={Settings} />
+              <Resource name="trails" options={{ label: 'Trilhas'}} list={ListGuesser} edit={EditGuesser} create={TrailCreate} icon={Timeline} />
+              <Resource name="techs" options={{ label: 'Tecnologias'}} list={ListGuesser} edit={EditGuesser} icon={Code} />
    </Admin>   
 );
 
