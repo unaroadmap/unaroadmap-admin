@@ -1,6 +1,7 @@
 import * as React from "react";
 import { List, SimpleList, Datagrid, TextField, TextInput, 
-         NumberInput, Edit, SimpleForm, Create, ArrayField, ArrayInput, SingleFieldList, SimpleFormIterator, ChipField, DateInput, RichTextField  } from 'react-admin';
+         ReferenceInput, Edit, SimpleForm, Create, ArrayField, ArrayInput, SingleFieldList, 
+         SimpleFormIterator, ChipField, SelectInput   } from 'react-admin';
 import { useMediaQuery } from '@material-ui/core';
 
 const TrailTitle = ({ record }) => {
@@ -41,13 +42,11 @@ export const TrailEdit = props => (
             <TextInput disabled source="id" />
             <TextInput source="name" />
             <TextInput source="description" />
-            <ArrayInput source="topics">
+            <ArrayInput label="Tópicos" source="topics">
               <SimpleFormIterator>
-                <TextInput source="id" />
-                <DateInput source="name" />
-                <TextInput source="description" />
-                <NumberInput source="order" />
-                <TextInput source="url" />
+                <ReferenceInput label="Tópico" source="id"  reference="topics">
+                  <SelectInput optionText="name" />
+                </ReferenceInput>
               </SimpleFormIterator>
             </ArrayInput>
         </SimpleForm>    
@@ -61,11 +60,9 @@ export const TrailEdit = props => (
             <TextInput label="Descrição" source="description" />
             <ArrayInput label="Tópicos" source="topics">
               <SimpleFormIterator>
-                <TextInput source="id" />
-                <DateInput source="name" />
-                <TextInput source="description" />
-                <NumberInput source="order" />
-                <TextInput source="url" />
+                <ReferenceInput label="Tópico" source="id"  reference="topics">
+                  <SelectInput optionText="name" />
+                </ReferenceInput>
               </SimpleFormIterator>
             </ArrayInput>
         </SimpleForm>      
