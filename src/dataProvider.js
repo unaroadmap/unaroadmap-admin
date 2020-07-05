@@ -2,7 +2,7 @@ import { fetchUtils, Admin, Resource } from 'react-admin';
 import { stringify } from 'query-string';
 
 
-const apiUrl = 'https://unaroadmap-api.herokuapp.com';
+const apiUrl = 'https://unaroadmap-api.herokuapp.com/';
 //const httpClient = fetchUtils.fetchJson;
 
 const httpClient = (url, options = {}) => {
@@ -27,7 +27,7 @@ export default {
 
         return httpClient(url).then(({ headers, json }) => ({
             data: json,
-            total: 100,//parseInt(headers.get('content-range').split('/').pop(), 10),
+            total: parseInt(headers.get('content-range').split('/').pop(), 10),
         }));
     },
 

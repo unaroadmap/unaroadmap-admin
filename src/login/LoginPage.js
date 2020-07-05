@@ -5,6 +5,7 @@ import useLoginStyles from './LoginStyle';
 
 
 const LoginPage = ({ theme }) => {
+    
     const classes = useLoginStyles();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -17,6 +18,7 @@ const LoginPage = ({ theme }) => {
     };
 
 return (
+    
     <ThemeProvider theme={theme}>
         <div className={classes.html}>
             <div className={classes.logoCircle + ' ' + classes.logoCircleUNA}></div>

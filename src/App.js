@@ -1,5 +1,17 @@
 import * as React from 'react';
-import { Admin, Resource, ListGuesser, EditGuesser } from 'react-admin';
+import { fetchUtils, Admin, Resource, ListGuesser, EditGuesser } from 'react-admin';
+import UserIcon from '@material-ui/icons/Group';
+import AccountBoxRounded from '@material-ui/icons/AccountBoxRounded';
+import BusinessCenterSharp from '@material-ui/icons/BusinessCenterSharp';
+import BallotSharp from '@material-ui/icons/BallotSharp';
+import Code from '@material-ui/icons/Code';
+import Settings from '@material-ui/icons/Settings';
+import Timeline from '@material-ui/icons/Timeline';
+import jsonServerProvider from 'ra-data-json-server';
+import portugueseMessages from "@henriko/ra-language-portuguese";
+import polyglotI18nProvider from "ra-i18n-polyglot";
+
+
 //import { PostList, PostEdit, PostCreate } from './posts';
 import { UserList, UserEdit, UserCreate } from './components/users/users';
 import { StateList, StateEdit, StateCreate } from './components/states/states';
@@ -12,23 +24,23 @@ import { CompanyList, CompanyEdit, CompanyCreate } from './components/companys/c
 import { ProjectList, ProjectEdit, ProjectCreate } from './components/projects/projects';
 import { TopicList, TopicEdit, TopicCreate } from './components/topics/topics';
 import { TrailList, TrailEdit, TrailCreate } from './components/trails/trails';
-
-import UserIcon from '@material-ui/icons/Group';
-import AccountBoxRounded from '@material-ui/icons/AccountBoxRounded';
-import BusinessCenterSharp from '@material-ui/icons/BusinessCenterSharp';
-import BallotSharp from '@material-ui/icons/BallotSharp';
-import Code from '@material-ui/icons/Code';
-import Settings from '@material-ui/icons/Settings';
-import Timeline from '@material-ui/icons/Timeline';
-
 import Dashboard from './Dashboard';
 import authProvider from './authProvider';
-import dataProvider from './dataProvider';
+//import dataProvider from './dataProvider';
 import LoginPage from './login/LoginPage';
 import LogoutButton from './login/LogoutButton.js';
 
-import portugueseMessages from "@henriko/ra-language-portuguese";
-import polyglotI18nProvider from "ra-i18n-polyglot";
+const httpClient = (url, options = {}) => {
+   if(!options.headers) {
+       options.headers = new Headers({ Accept: 'application/json' });
+   }
+   const token = localStorage.getItem('@unaroadmap-Token');
+   options.headers.set('X-Custom-Header', 'foobar');
+   options.headers.set('Authorization', `Bearer ${token}`);
+   return fetchUtils.fetchJson(url, options);
+}
+
+const dataProvider = jsonServerProvider('https://unaroadmap-api.herokuapp.com', httpClient);
 
 const messages = {
    pt: portugueseMessages,

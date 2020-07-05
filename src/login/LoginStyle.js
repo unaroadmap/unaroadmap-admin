@@ -1,6 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useLoginStyles = makeStyles({
+
     form: {
         display: 'contents',
     },
@@ -37,6 +38,9 @@ const useLoginStyles = makeStyles({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    circleContMobile: {
+
     },
     loginCont: {
         width: '270px',
