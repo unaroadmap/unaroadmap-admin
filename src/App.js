@@ -40,7 +40,7 @@ const httpClient = (url, options = {}) => {
    return fetchUtils.fetchJson(url, options);
 }
 
-const dataProvider = jsonServerProvider('http://unaroadmap-api.herokuapp.com', httpClient);
+const dataProvider = jsonServerProvider('https://unaroadmap-api.herokuapp.com', httpClient);
 
 const messages = {
    pt: portugueseMessages,
