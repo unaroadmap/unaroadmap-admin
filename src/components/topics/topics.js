@@ -1,6 +1,6 @@
 import * as React from "react";
 import { List, SimpleList, Datagrid, TextField, TextInput, 
-         NumberInput, NumberField, Edit, SimpleForm, Create, UrlField } from 'react-admin';
+         NumberInput, NumberField, Edit, SimpleForm, Create, UrlField, DateField } from 'react-admin';
 import { useMediaQuery } from '@material-ui/core';
 
 const TopicTitle = ({ record }) => {
@@ -22,10 +22,11 @@ export const TopicList = props => {
         ):(
           <Datagrid rowClick="edit">
             <TextField source="id" />
+            <NumberField label="Ordem" source="order" />
             <TextField source="name" />
             <TextField source="description" />
-            <NumberField source="order" />
             <UrlField source="url" />
+            <TextField label="Tempo Duração" source="duration" />
           </Datagrid>
         )}
     </List>
@@ -36,10 +37,11 @@ export const TopicEdit = props => (
     <Edit title={<TopicTitle />} {...props}>
       <SimpleForm>
           <TextInput disabled source="id" />
+          <NumberInput label="Ordem" source="order" />
           <TextInput source="name" />
           <TextInput source="description" />
-          <TextInput source="order" />
           <TextInput source="url" />
+          <TextInput label="Tempo Duração" source="duration" />
       </SimpleForm>    
     </Edit>  
   );
@@ -47,10 +49,12 @@ export const TopicEdit = props => (
   export const TopicCreate = props => (
     <Create {...props}>
       <SimpleForm>
+          <NumberInput label="Ordem" source="order" />
           <TextInput label="Nome" source="name" />
           <TextInput label="Descrição" source="description" />
-          <NumberInput label="Ordem" source="order" />
+          
           <TextInput label="Url" source="url" />
+          <TextInput label="Tempo Duração" source="duration" />
       </SimpleForm>    
     </Create>  
   );

@@ -2,7 +2,7 @@ import * as React from "react";
 import { List, SimpleList, Datagrid, TextField, TextInput, 
          Edit, SimpleForm, Create, SelectInput, ReferenceField, 
          ReferenceInput, ArrayField, SingleFieldList, ChipField, 
-         DateField, DateInput,ArrayInput,SimpleFormIterator  } from 'react-admin';
+         DateField, DateInput,ArrayInput,SimpleFormIterator, UrlField  } from 'react-admin';
 import { useMediaQuery } from '@material-ui/core';
 
 const ProjectTitle = ({ record }) => {
@@ -38,6 +38,7 @@ export const ProjectList = props => {
                 <ChipField source="name" />
               </SingleFieldList>
             </ArrayField>
+            <UrlField label="Questionário" source="str" />
         </Datagrid>
         )}
     </List>
@@ -50,6 +51,7 @@ export const ProjectEdit = props => (
             <TextInput disabled label="Código" source="id" />
             <TextInput label="Nome" source="name" />
             <TextInput label="Descrição" source="description" />
+            <TextInput label="Questionário" source="str" />
             <ReferenceInput label="Empresa" source="company_id" reference="companys">
                 <SelectInput optionText="name" />
             </ReferenceInput>
@@ -67,15 +69,17 @@ export const ProjectEdit = props => (
                 </ReferenceInput>
               </SimpleFormIterator>
             </ArrayInput>
-      </SimpleForm>    
+      </SimpleForm>
+      
     </Edit>  
   );
 
   export const ProjectCreate = props => (
     <Create {...props}>
       <SimpleForm>
-      <TextInput label="Nome" source="name" />
+            <TextInput label="Nome" source="name" />
             <TextInput label="Descrição" source="description" />
+            <TextInput label="Questionário" source="str" />
             <ReferenceInput label="Empresa" source="company_id" reference="companys">
                 <SelectInput optionText="name" />
             </ReferenceInput>
@@ -93,6 +97,7 @@ export const ProjectEdit = props => (
                 </ReferenceInput>
               </SimpleFormIterator>
             </ArrayInput>
-      </SimpleForm>    
+      </SimpleForm>
+          
     </Create>  
   );
