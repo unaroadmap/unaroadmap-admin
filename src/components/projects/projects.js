@@ -2,18 +2,24 @@ import * as React from "react";
 import { List, SimpleList, Datagrid, TextField, TextInput, 
          Edit, SimpleForm, Create, SelectInput, ReferenceField, 
          ReferenceInput, ArrayField, SingleFieldList, ChipField, 
-         DateField, DateInput,ArrayInput,SimpleFormIterator, UrlField  } from 'react-admin';
+         DateField, DateInput,ArrayInput,SimpleFormIterator, UrlField, Filter  } from 'react-admin';
 import { useMediaQuery } from '@material-ui/core';
 
 const ProjectTitle = ({ record }) => {
     return <span>Projeto {record ? `"${record.name}"` : ''}</span>
 };
 
+const ProjectFilter = (props) => (
+  <Filter {...props}>
+      <TextInput label="Pesquisar" source="q" alwaysOn />
+  </Filter>
+);
+
 
 export const ProjectList = props => {
     const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
     return (
-    <List {...props}>
+    <List filters={<ProjectFilter />} {...props}>
         {isSmall ? (
             <SimpleList
               primaryText={record => record.name}
