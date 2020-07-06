@@ -55,14 +55,14 @@ export const ProjectEdit = props => (
             </ReferenceInput>
             <ArrayInput label="Candidatos" source="candidates">
               <SimpleFormIterator>
-                <ReferenceInput source="candidate_id" reference="candidates">
+                <ReferenceInput label="Candidato" source="id" reference="candidates">
                   <SelectInput optionText="name" />
                 </ReferenceInput>
               </SimpleFormIterator>
             </ArrayInput>
             <ArrayInput label="Trilhas" source="trails">
               <SimpleFormIterator>
-                <ReferenceInput source="trail_id" reference="trails">
+                <ReferenceInput label="Trilha" source="id" reference="trails">
                   <SelectInput optionText="name" />
                 </ReferenceInput>
               </SimpleFormIterator>
@@ -81,14 +81,14 @@ export const ProjectEdit = props => (
             </ReferenceInput>
             <ArrayInput label="Candidatos" source="candidates">
               <SimpleFormIterator>
-                <ReferenceInput source="candidate_id" reference="candidates">
+                <ReferenceInput label="Candidato" source="id" reference="candidates">
                   <SelectInput optionText="name" />
                 </ReferenceInput>
               </SimpleFormIterator>
             </ArrayInput>
             <ArrayInput label="Trilhas" source="trails">
               <SimpleFormIterator>
-                <ReferenceInput source="trail_id" reference="trails">
+                <ReferenceInput label="Trilha" source="id" reference="trails">
                   <SelectInput optionText="name" />
                 </ReferenceInput>
               </SimpleFormIterator>

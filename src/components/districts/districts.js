@@ -36,7 +36,7 @@ export const DistrictEdit = props => (
           <TextInput source="name" />
           <ReferenceInput source="city_id"  reference="citys">
             <SelectInput optionText="name" />
-        </ReferenceInput>
+          </ReferenceInput>
       </SimpleForm>    
     </Edit>  
   );
